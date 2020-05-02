@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset=md-1">
+                <div class="row">
+                    <div class="col-md-5 register-left col-sm-12">
+                        <div class="register-left-content">
+                            <h3>Join Us</h3>
+                            <p>Subscribe to our YouTube tutorials, Telegram Channel and Medium Blog for more exciting tutorials</p>
+                            <button class="btn btn-primary">Hire Us</button>
+                        </div>
+                    </div>
+                    <div class="col-md-7 register-right shadow-lg register">
+                        <h2 id="auth-head">Register Here</h2>
+                        <form id="form" onsubmit="event.preventDefault();" method="POST" class="register-form">
+                            {% csrf_token %}
+                            <div id="name" class="form-group">
+                                <input name="full_name" type="text" class="form-control" placeholder="Full Name" required>
+                                <p>Full Name</p>
+                            </div>
+                            <div id="email" class="form-group">
+                                <input name="email" type="email" class="form-control" placeholder="Email" required>
+                                <p for="">Email</p>
+                            </div>
+                            <div id="password1" class="form-group">
+                                <input name="password1" type="password" class="form-control" placeholder="Password" required>
+                                <p for="">Password</p>
+                            </div>
+                            <div id="password2" class="form-group">
+                                <input name="password2" type="password" class="form-control" placeholder="Confirm Password" required>
+                                <p for="">Password Confirm</p>
+                            </div>
+                            <button type="button" id="login" class="btn btn-login">Login</button>
+                            <button id="register" type="button" class="btn btn-primary">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    window.onload = function() {
+        Particles.init({
+            selector: '.background',
+            maxParticles: 300,
+            sizeVariations: 5,
+            color: '#fff', // '#121416',
+            connectParticles: false
+        });
+    }
+
+    const removeElement = (element) => {
+        element.parentElement.removeChild(element)
+    }
+
+    const addElement = (parentElement, element) => {
+        parentElement.insertAdjacentElement('afterBegin', element)
+    }
+
+    const loginButton = document.getElementById("login")
+    const registerButton = document.getElementById("register")
+    const authParent = loginButton.parentElement
+
+    const authHead = document.getElementById("auth-head")
+    const name = document.getElementById("name")
+    const password2 = document.getElementById("password2")
+    const password1 = document.getElementById("password1")
+
+    const formParent = name.parentElement.parentElement
+    const form = name.parentElement
+
+    loginButton.onclick = () => {
+
+        if (formParent.classList.contains("register")) {
+
+            formParent.style.animation = "none"
+            authHead.innerText = "Login Here "
+            name.style.display = "none"
+            password2.style.display = "none"
+            authParent.removeChild(loginButton)
+            authParent.removeChild(registerButton)
+
+            registerButton.style.float = "none"
+            loginButton.style.float = "right"
+            authParent.insertAdjacentElement('beforeend', loginButton)
+            authParent.insertAdjacentElement('beforeend', registerButton)
+
+            formParent.style.backgroundImage = "linear-gradient(to right, #ff5722, #0c5460)";
+            formParent.classList.remove("register")
+            formParent.classList.add("login")
+            formParent.style.animation = "bounceIn 0.6s ease-in-out"
+        } else {
+            // console.log("Form Submission")
+            form.submit()
+        }
+    }
+
+    registerButton.onclick = () => {
+        if (formParent.classList.contains("login")) {
+            formParent.style.animation = "none"
+            head.innerText = "Register Here"
+            name.style.display = "block"
+            password2.style.display = "block"
+
+            authParent.removeChild(registerButton)
+            authParent.removeChild(loginButton)
+
+            loginButton.style.float = "none"
+            registerButton.style.float = "right"
+            authParent.insertAdjacentElement('beforeend', registerButton)
+            authParent.insertAdjacentElement('beforeend', loginButton)
+
+            formParent.style.backgroundImage = "linear-gradient(to right, #ff5722, #ff9800)"
+            formParent.classList.remove("login")
+            formParent.classList.add("register")
+            formParent.style.animation = "bounceIn 0.6s ease-in-out"
+        } else {
+            form.action = "{% url 'register' %}"
+
+            form.submit()
+        }
+    }
+{% endblock %}

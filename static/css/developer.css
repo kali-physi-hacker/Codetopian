@@ -1,0 +1,39 @@
+body {
+    height: auto!important;
+}
+
+div#profile-container {
+    margin-top: 200px;
+    width: 80%;
+}
+
+div.side-nav {
+    margin: 0;
+    border-left: 2px solid #e1e3e5;
+    min-height: 768px;
+    display: flex;
+    align-items: center;
+}
+
+div.side-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+div.side-nav ul li {
+    margin-bottom: 1.5em;
+    display: block;
+    padding: 12px 45px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+div.side-nav ul li:hover, div.side-nav ul li.active {
+    border-bottom-left-radius: 25% 45%;
+    border-bottom-right-radius: 25% 45%;
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important;
+}

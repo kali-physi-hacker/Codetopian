@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid body-content">
+        <div class="row">
+            <div class="col-lg-6 content-left shadow-lg">
+                <h3 class="body-head">What we are</h3>
+                <p>
+                    The Codetopia community is a software developing /Techno Training Ghana based
+                    organization/community consisting of Computer Science and I.T personnel from
+                    various Tech institutions. It was founded on the 25th of March in the year 2020.
+                    The community is mainly for both software and website developers to enhance training
+                    of young and upcoming computer scientists.
+                    The community is a sub-division of the its mother company MARATHIN-SOFT INC.
+                    (A company in due process of establishment). The community and company respectively
+                    was founded by Seth Mensah Amekudzi Lucky who is also the CEO and co-founded by
+                    Raphael Appiah-Kubi who is the Head of communications and global affairs of the community
+                    and company. And others whose name will later be disclosed. We are
+                    "<b><u><i>Computer Scientists of the next generation</i></u></b>".
+                </p>
+                <i class="fa-5x fas fa-user-friends"></i>
+            </div>
+            <div class="col-lg-6 content-right shadow-lg">
+                <h3 class="body-head">What we do</h3>
+                <p>
+                    Computer Science being an involving field of discipline, requires organisation and continues studiness, is not only
+                    a discipline involving writing of codes or programming, but mainly, solving of problems using computer programs.
+                    It may be thought of as a discipline whose primary task is to solve problems and that's we do. We design, create and
+                    write quality software whose primary goal is to solve a problem at hand. Therefore, we code not only for fun but also
+                    to solve problems. We "<b><u><i>Solve Problems</i></u></b>".
+                </p>
+                <i class="fa-5x fas fa-tools"></i>
+            </div>
+        </div>
+    </div>
+    <a href="#content-mid" style="margin: 0;">
+        <i class="arrow fas fa-long-arrow-alt-down fa-7x"></i>
+    </a>
+    <div id="content-mid" class="container-fluid content-mid">
+        <div class="row tile-container">
+            <div class="col-lg-3 tile shadow-lg">
+                <h3>Our Vision</h3>
+                <p>
+                    It is the sole vision of the codetopia community to create a utopia for
+                    Computer Scientists and Technology enthusiast to make an impact in the world in
+                    which we live in through science and technology
+                    Technology enthusiast and programmers/coders to assemble and CODE FOR CHANGE
+                    in this technological age.
+                </p>
+                <p style="text-align: center"><i class="fa fa-award fa-5x"></i></p>
+            </div>
+            <div class="col-lg-3 tile shadow-lg">
+                <h3>Our Mission</h3>
+                    <p>
+                        Helping young and upcoming developers and other I.T field personnel build interest and courage in facing tech challenges in their technological fields.
+                        Training and specializing young developers and also other I.T personnel in their field of interest.
+                        Equip young programmers/coders and I.T personnel the necessary skills and tools for job opportunities on the techno market.
+                        VISION OF THE COMMUNITY
+                    </p>
+                    <p style="text-align: center"><i class="fa fa-hands fa-5x"></i></p>
+            </div>
+            <div class="col-lg-3 tile shadow-lg">
+                <h3>Our Goal</h3>
+                <p>
+                    We are the fastest growing community of both frontend and backend web developers.
+                    Passion drives us. Making an impact in this world we live in through science and technology
+                    is our prime motive and passion. Imagination and Creativity lies within the edges of our brains. Limitation to
+                    it depends on your exposure. We are<br/> "<b><u><i>Scientists of the next generation</i></u></b>".
+                </p>
+                <p style="text-align: center"><i class="fa fa-graduation-cap fa-5x"></i></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    window.onload = function() {
+        Particles.init({
+            selector: '.background',
+            maxParticles: 500,
+            sizeVariations: 5,
+            connectParticles: false,
+            color: '#fff', // '#121416',
+
+        });
+    }
+{% endblock %}
+

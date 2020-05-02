@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    {% block link %} {% endblock %}
+    <title>Join Us</title>
+</head>
+<body>
+    <nav class="top-nav shadow">
+        <ul class="left">
+            <li><a class="{{ find_us_active }}" href="{% url 'find_us' %}">Find <Developer></Developer> <i class="fa fa-search"></i></a></li>
+            <li><a class="{{ about_us_active }}" id="link" href="#">About Us <i class="fa fa-hand-paper"></i></a></li>
+            <li><a class="{{ projects_active }}" href="#">Projects <i class="fa fa-project-diagram"></i></a></li>
+            <li><a class="{{ courses_active }}" href="#">Courses <i class="fa fa-book"></i></a></li>
+            <li><a class="{{ home_active }}" href="{% url 'home' %}">Home <i class="fa fa-home"></i></a></li>
+        </ul>
+        {% if not user.is_authenticated %}
+            <ul class="auth">
+                <li><a href="{% url 'accounts' %}">Login / Register</a></li>
+            </ul>
+        {% else %}
+            <ul class="auth">
+                <li class="dropdown-container">
+                    {% if user.is_superuser %}
+                        <a href="#">{{ user.full_name }} <i class="fas fa-user-astronaut"></i></a>
+                    {% else %}
+                        <a href="#"><i class="fas fa-user">{{ user.full_name }}</i></a>
+                    {% endif %}
+                    <ul class="dropdown">
+                        <li><a href="{% url 'developer_profile' %}">Developer Profile <i class="fa fa-laptop-code"></i></a></li>
+                        <li><a href="#">Settings <i class="fas fa-cogs"></i></a></li>
+                        <li><a href="{% url 'logout' %}">Logout <i class="fa fa-lock"></i></a></li><br/>
+                    </ul>
+                </li>
+            </ul>
+        {% endif %}
+    </nav>
+{#    {% block header %}{% endblock %}#}
+    <div class="top-left-badge bg-dark shadow-lg"><p>CodeTopian Badge</p></div>
+    <h1 style="text-align: center" class="heading"><span id="mainhead"></span><br/>
+        <span id="subhead" class="subhead">
+        </span>
+    </h1>
+    <div class="flow"></div>
+    {% block content %}{% endblock %}
+    <footer class="shadow-lg">
+        <p>
+            Copyright &copy; CodeTopians Community of Fullstack Developers
+            <span class="social-container">
+                <a href="#" class="bg-dark"><i class="fab fa-github text-light"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-facebook-f text-primary"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-twitter text-primary"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-instagram text-danger"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-whatsapp text-success"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-youtube text-danger"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-google text-light"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-linkedin-in text-light"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-telegram-plane text-light"></i></a>
+                <a class="bg-dark" href="#"><i class="fab fa-medium text-light"></i></a>
+            </span>
+        </p>
+    </footer>
+    <canvas class="background"></canvas>
+    <script src="{% static 'particles.min.js' %}"></script>
+    <script>
+        let head = document.getElementById("mainhead")
+        let subhead = document.getElementById("subhead")
+        {% block headTextAnimate %}
+        const headText = "CodeTopian Community of Fullstack Developers"
+        const subText = "The fastest growing community of fullstack developers"
+        {% endblock %}
+        const typeWriter = (text, element) => {
+            let i = 0
+            const typeWrite = () => {
+                element.innerHTML += text.charAt(i)
+                i += 1
+                setTimeout(typeWrite, 100)
+            }
+            typeWrite()
+        }
+        typeWriter(headText, head)
+        const waitTime = (100*(subText.length-4))
+        setTimeout(typeWriter, waitTime, subText, subhead)
+        {% block scripts %}{% endblock scripts %}
+    </script>
+    {% block scriptWhole %}{% endblock %}
+</body>`
+</html>

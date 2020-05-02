@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/developer.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="profile-container">
+        <div class="side-nav">
+            <ul>
+                <li class="active">Personal Information</li>
+                <li>Bio Information</li>
+                <li>School / College Info</li>
+                <li>Working Info</li>
+                <li>Contact Details</li>
+                <li>Projects</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

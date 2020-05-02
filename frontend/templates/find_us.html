@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'frontend/css/find_us.css' %}" />
+{% endblock %}
+
+{% block headTextAnimate %}
+    const headText = "Find Developers All Around The Entire World"
+    const subText = "Find friends, develop together, share code, engage in opensource projects and network yourself"
+{% endblock %}
+
+{% block content %}
+    <div id="search-container">
+
+    </div>
+{% endblock %}
+
+{% block scriptWhole %}
+    <script src="{% static 'frontend/main.js' %}"></script>
+{% endblock %}
