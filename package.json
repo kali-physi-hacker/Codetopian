@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development --watch ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
+    "profileDev": "webpack --mode development --watch ./frontend/src/profile.js --output ./frontend/static/frontend/profile.js",
     "build": "webpack --mode production ./frontend/src/index.js --output ./frontend/static/frontend/main.js"
   },
   "keywords": [],

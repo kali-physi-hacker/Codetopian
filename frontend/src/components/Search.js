@@ -50,13 +50,13 @@ class SearchBar extends React.Component {
             if (matchDevelopers.length > 0) {
                 this.setState({ matchDevelopers: matchDevelopers })
             } else {
-                const notFound = {id: -1, first_name: "No Developer", last_name: "Found"}
+                const notFound = {id: -1, first_name: "No Developer", last_name: "Found", email_address: ""}
                 this.setState({matchDevelopers: [notFound]})
             }
         }else if (name == "") {
             this.setState({matchDevelopers: []})
         } else {
-            const notFound = {first_name: 'No Developer', last_name: 'Found'}
+            const notFound = {first_name: 'No Developer', last_name: 'Foundkd', email_address: ""}
             this.setState({matchDevelopers: notFound})
         }
     }
@@ -70,7 +70,12 @@ class SearchBar extends React.Component {
                 <div className="search-result shadow-lg">
                     <ul>
                         {this.state.matchDevelopers.map(developer=> (
-                            <li key={developer.id}>{developer.first_name + " " + developer.last_name}</li>
+                            <li key={developer.id}>
+                                { developer.first_name + " " + developer.last_name }
+
+                                <b>&lt;{ developer.email_address?null:developer.email_address }&gt;</b>
+
+                            </li>
                         ))}
                     </ul>
                 </div>
